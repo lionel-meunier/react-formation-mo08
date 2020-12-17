@@ -7,9 +7,12 @@ export class LoginForm extends React.Component {
    */
   constructor(props) {
     super(props);
+    // Initialisation du state par défaut du composant
     this.state = {
       username: "",
       password: "",
+      error: "",
+      loading: false,
     };
   }
 
@@ -23,13 +26,25 @@ export class LoginForm extends React.Component {
   submitForm(event) {
     event.preventDefault();
     event.stopPropagation();
-
+    // modification du state pour signaler le début du traitement et réinitialiser l'erreur
+    this.setState({ loading: true, error: "" });
+    /**
+     * Utilisation de la requête login
+     */
     authLogin(this.state.username, this.state.password)
       .then((res) => {
-        console.log("SUCCESS", res);
+        // En cas de success
+        // modification du state pour signaler la fin du traitement
+        this.setState({
+          loading: false,
+        });
+        //Appelle de la fonction mis dans les propriétés (attribut html) à la création du composant par le parent
+        this.props.onLogin(res);
       })
-      .catch((reason) => {
-        console.log("ERROR", reason);
+      .catch((error) => {
+        // En cas d'erreur
+        // modification du state pour signaler la fin du traitement et préciser qu'il y a une erreur
+        this.setState({ loading: false, error });
       });
   }
 
@@ -51,8 +66,23 @@ export class LoginForm extends React.Component {
    * Appeller automatiquement par React
    */
   render() {
+    let error;
+    // Condition pour afficher l'erreur
+    if (this.state.error) {
+      error = (
+        <div className="message alert alert-danger">Il y a une erreur</div>
+      );
+    }
+
+    // Condition pour afficher si la requête est en cours de traitement
+    let load;
+    if (this.state.loading) {
+      load = <div>Loading...</div>;
+    }
+
     return (
       <form onSubmit={(e) => this.submitForm(e)}>
+        <h4>{this.props.title}</h4>
         <div className="form-group">
           <label htmlFor="username">username</label>
           <input
@@ -73,7 +103,8 @@ export class LoginForm extends React.Component {
             onChange={(e) => this.handleChange(e)}
           />
         </div>
-        <div className="message d-none">Il y a une erreur</div>
+        {error}
+        {load}
         <div>
           <button className="btn btn-primary">Login</button>
         </div>
