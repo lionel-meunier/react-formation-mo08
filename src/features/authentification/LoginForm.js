@@ -1,4 +1,5 @@
 import React from "react";
+import { authLogin } from "./auth-api";
 
 export class LoginForm extends React.Component {
   /**
@@ -22,7 +23,14 @@ export class LoginForm extends React.Component {
   submitForm(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log("SOUMIT", event, this.state);
+
+    authLogin(this.state.username, this.state.password)
+      .then((res) => {
+        console.log("SUCCESS", res);
+      })
+      .catch((reason) => {
+        console.log("ERROR", reason);
+      });
   }
 
   /**
