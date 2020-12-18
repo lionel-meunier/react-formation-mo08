@@ -68,3 +68,29 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+###Exercice
+
+Créer une application utilisant l'api `https://www.jsonapi.co/`
+Cette application sera entièrement privé il faudra être connecté pour accéder au page.
+Il faudra donc un formulaire de connexion, permetant à l'utilisateur de se connecter.
+
+Il y aura une page Utilisateurs listant des utilisateurs, suivant le temps on ajoutera des filtres de recherche de la pagination...
+
+Il y aura une page Produits listant des produits, suivant le temps on ajoutera des filtres de recherche de la pagination...
+
+Le But du TP est de comprendre les aspect suivants de REACT :
+
+- La création de composant
+- JSX
+- Les props à quoi il serve et comment on les utilises
+- Le cylce de vie et la gestion des états
+- La gestions des interactions avec l'utilisateur à travers les évènements
+- L'affichage conditionnel
+- Créer des listes et l'attribut "key"
+- La gestion des formulaire
+- La communication enfant -> parent et parent -> enfant et la synchronisation des états
+- Créer des composants qui ont des enfants dynamique.
+- Les bases du Router
+- les fragments
+- le lazy loading
