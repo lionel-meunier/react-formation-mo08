@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import { Note } from "./Note";
 
 export class Home extends Component {
@@ -21,18 +21,40 @@ export class Home extends Component {
     },
   ];
 
+  constructor(props) {
+    super(props);
+    this.state = { movies: this.movies };
+  }
+
+  changeNote(newNote, indexMovie) {
+    this.setState((prevState) => {
+      prevState.movies[indexMovie].note = newNote;
+      return prevState;
+    });
+  }
+
   render() {
-    const movies = this.movies.map((m, i) => (
-      <li key={i}>
-        {m.title}
-        <Note currentNote={m.note}></Note>
-      </li>
-    ));
+    const movies = this.state.movies.map((m, i) => {
+      let note;
+      if (m.note) {
+        note = <span className="badge badge-primary ml-2">{m.note}</span>;
+      }
+      return (
+        <li key={i}>
+          {m.title}
+          {note}
+          <Note
+            currentNote={m.note}
+            onChangeNote={(newNote) => this.changeNote(newNote, i)}
+          ></Note>
+        </li>
+      );
+    });
     return (
-      <div>
+      <Fragment>
         <h1>My home</h1>
         <ul>{movies}</ul>
-      </div>
+      </Fragment>
     );
   }
 }
