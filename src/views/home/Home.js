@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Note } from "./Note";
 
 export class Home extends Component {
   movies = [
@@ -24,7 +25,7 @@ export class Home extends Component {
     const movies = this.movies.map((m, i) => (
       <li key={i}>
         {m.title}
-        {m.note && <span class="badge badge-primary ml-2">{m.note}</span>}
+        <Note currentNote={m.note}></Note>
       </li>
     ));
     return (
