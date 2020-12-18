@@ -1,6 +1,7 @@
 import "./App.scss";
 import React, { Component } from "react";
 import { LoginForm } from "./features/authentification/LoginForm";
+import { Home } from "./views/home/Home";
 
 /**
  * Composant central de votre application
@@ -44,6 +45,8 @@ class App extends Component {
           <button className="btn btn-danger" onClick={() => this.logout()}>
             Logout
           </button>
+
+          <Home></Home>
         </div>
       );
     } else {
