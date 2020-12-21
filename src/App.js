@@ -60,11 +60,14 @@ class App extends Component {
             </button>
 
             <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
               <Route path="/users">
                 <Users />
               </Route>
               <Route path="/">
-                <Home />
+                <h1>Cette page n'existe pas</h1>
               </Route>
             </Switch>
           </div>
