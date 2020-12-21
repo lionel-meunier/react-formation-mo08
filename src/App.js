@@ -2,6 +2,8 @@ import "./App.scss";
 import React, { Component } from "react";
 import { LoginForm } from "./features/authentification/LoginForm";
 import { Home } from "./views/home/Home";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Users } from "./views/users/Users";
 
 /**
  * Composant central de votre application
@@ -41,13 +43,22 @@ class App extends Component {
   render() {
     if (this.state.isAuth) {
       return (
-        <div className="App container">
-          <button className="btn btn-danger" onClick={() => this.logout()}>
-            Logout
-          </button>
+        <Router>
+          <div className="App container">
+            <button className="btn btn-danger" onClick={() => this.logout()}>
+              Logout
+            </button>
 
-          <Home></Home>
-        </div>
+            <Switch>
+              <Route path="/users">
+                <Users />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       );
     } else {
       return (
