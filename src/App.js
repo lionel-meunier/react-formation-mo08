@@ -45,6 +45,16 @@ class App extends Component {
       return (
         <Router>
           <div className="App container">
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/users">Utilisateurs</Link>
+                </li>
+              </ul>
+            </nav>
             <button className="btn btn-danger" onClick={() => this.logout()}>
               Logout
             </button>
