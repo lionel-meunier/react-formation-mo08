@@ -1,9 +1,13 @@
 import "./App.scss";
 import React, { Component } from "react";
-import { LoginForm } from "./features/authentification/LoginForm";
+import {
+  LoginForm,
+  LoginFormFunc,
+} from "./features/authentification/LoginForm";
 import { Home } from "./views/home/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Users } from "./views/users/Users";
+import { ContactsWithRouter, Contacts } from "./views/contacts/Contacts";
 
 /**
  * Composant central de votre application
@@ -53,6 +57,9 @@ class App extends Component {
                 <li>
                   <Link to="/users">Utilisateurs</Link>
                 </li>
+                <li>
+                  <Link to="/contacts">Contacts</Link>
+                </li>
               </ul>
             </nav>
             <button className="btn btn-danger" onClick={() => this.logout()}>
@@ -66,6 +73,11 @@ class App extends Component {
               <Route path="/users">
                 <Users />
               </Route>
+
+              <Route
+                path="/contacts"
+                render={(routeProps) => <Contacts {...routeProps} />}
+              />
               <Route path="/">
                 <h1>Cette page n'existe pas</h1>
               </Route>
@@ -80,6 +92,10 @@ class App extends Component {
             title={"Mon Titre"}
             onLogin={(token) => this.loginUser(token)}
           ></LoginForm>
+          <LoginFormFunc
+            title={"Mon Titre en function"}
+            onLogin={(token) => this.loginUser(token)}
+          ></LoginFormFunc>
         </div>
       );
     }

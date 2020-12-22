@@ -69,17 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-###Exercice
-
-Créer une application utilisant l'api `https://www.jsonapi.co/`
-Cette application sera entièrement privé il faudra être connecté pour accéder au page.
-Il faudra donc un formulaire de connexion, permetant à l'utilisateur de se connecter.
-
-Il y aura une page Utilisateurs listant des utilisateurs, suivant le temps on ajoutera des filtres de recherche de la pagination...
-
-Il y aura une page Produits listant des produits, suivant le temps on ajoutera des filtres de recherche de la pagination...
-
-Le But du TP est de comprendre les aspect suivants de REACT :
+Le But des TP est de comprendre les aspect suivants de REACT :
 
 - La création de composant
 - JSX
@@ -94,3 +84,52 @@ Le But du TP est de comprendre les aspect suivants de REACT :
 - Les bases du Router
 - les fragments
 - le lazy loading
+
+Exercice Home :
+
+Exercice 1
+Créer un composant Home qui apparait uniquement quand on est connecté.
+dans "src/views/home/Home.js"
+
+Exercice 2
+Dans ce composant créer une liste de film.
+Chaque film à un titre et une note qui doit être un nombre entre 1 et 5. La note peut être null si le film n'est pas encore noter.
+
+Exercice 3
+Dans chaque film créer un composant permettant de noter le film de 1 à 5.
+Le composant doit prendre la forme de 5 bouton 1,2,3,4,5 et d'un texte affichant la note courante.
+
+Exercice 4
+Afficher la note dans le composant parent et la mettre à jour.
+
+Exercice 5
+Trier le tableau du meilleur film au plus bas et rentrer chez vous
+
+Exercice Router :
+
+Exercice 1 :
+Créer un deuxième composant "Users" affichant un titre qui sera utiliser dans le routeur.
+Ajouter le routeur a votre application avec pour route :
+
+- "/" affichera Home
+- "/users" affichera users
+
+Exercices 2:
+Ajouter un menu pour passer de home à users.
+Le menu doit s'afficher quelque soit l'url.
+
+Exercices 3:
+Faire en sorte que pour l'url "/" on affiche la home.
+Pour l'url qui commence par "/users" on affiche users
+Pour toute les autres url on affiche "Cette page n'existe pas".
+
+Exercice 4
+Créer un composant "UserDetail".
+Faire ne sorte d'afficher ce composant pour toutes les urls de type
+"/users/1" ou 1 est une variable dynamique qui représsente l'id de l'utilisateur.
+Afficher cette id dans "UserDetail"
+
+https://reactrouter.com/web/example/nesting
+
+https://reactrouter.com/web/api/Route/path-string-string
+path avec ":" utiliser les fonctions "useParams" et "useRouteMatch"
